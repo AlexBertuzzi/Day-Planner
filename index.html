@@ -30,53 +30,39 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="row">
+        <h2>9AM</h2><textarea data-hour="9AM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>10AM</h2><textarea data-hour="10AM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>11AM</h2><textarea data-hour="11AM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>12PM</h2><textarea data-hour="12PM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>1PM</h2><textarea data-hour="1PM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>2PM</h2><textarea data-hour="2PM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>3PM</h2><textarea data-hour="3PM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>4PM</h2><textarea data-hour="4PM"></textarea><button></button>
+      </div>
+      <div class="row">
+        <h2>5PM</h2><textarea data-hour="5PM"></textarea><button></button>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
    
-   <script type="text/javascript">
-
-      $(document).ready(function() {
-        var today = $("<p>");
-          today = moment().format("dddd, MMMM Do YYYY");
-          $("#currentDay").append(today);
-        
-        var timeStamp = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
-        //var timeStamp = moment().hour(i);
-        //var timeStampText = moment(timeStamp).format("hA");
-
-       
-        for (var i = 0; i < timeStamp.length; i++){
-        //for (var i = 9; i < 18; i++){
-        
-          var row = $("<div>");
-            row.addClass("row time-block");
-            $(".container").append(row);
-
-          var hour = $("<div>");
-            hour.addClass("col-1 hour");
-
-          var hourText = $("<p>");
-            hourText = timeStamp[i];
-            //hourText = timeStampText;
-
-          var description = $("<div>");
-            description.addClass("col-9 description");
-
-          var saveBtn = $("<div>");
-            saveBtn.addClass("col-2 saveBtn i:hover");
-            
-            console.log(hourText);
-      
-        }
-          $(".row").append(hour, description, saveBtn);
-          $(".col-1").append(hourText);
-          
-
-      });
-
-    </script>
   
   </body>
 </html>
