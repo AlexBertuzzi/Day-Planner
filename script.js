@@ -3,8 +3,7 @@ var today = $("p");
     $("#currentDay").append(today);
     
 var currentHour = moment().hour();
-    currentHour = moment(currentHour).format("H");
-    currentHour = parseInt(currentHour)
+    //currentHour = parseInt(currentHour)
     console.log(currentHour);
 
 $(".row").addClass("time-block");
@@ -12,36 +11,31 @@ $("h2").addClass("col-1 hour");
 $("textarea").addClass("col-10 description");
 $("button").addClass("col-1 saveBtn saveBtn i:hover");  
 
+var saveData9 = (localStorage.getItem("textInput9"));
+    $("#t9").textContent = saveData9.text;
+
 function conditionalFormat(){ ///we need to break this down to work on a single element no loop if 9 =<> curent hour set class then repeat for every element
-    var dataHour = []
-        dataHour = $.makeArray($("textarea").map(function(){
-        return parseInt($(this).attr("data-hour"))
-         }));
-        console.log(dataHour)
-        for (var i = 0; i < dataHour.length; i++){
-            if (dataHour[i] < currentHour){
-                $("textarea").addClass("past")
-                $("textarea").removeClass("present future")
-            }
-            if (dataHour[i] == currentHour){
-                $("textarea").addClass("present")
-                $("textarea").removeClass("present future")
-            }
-            if (dataHour[i] > currentHour){
-                $("textarea").addClass("future")
-                $("textarea").removeClass("past present")
-            }
-        }
-};
+
+    if (9 < currentHour){
+        $("#t9").addClass("past")
+    }
+    if (9 == currentHour){
+        $("#t9").addClass("present")
+    }
+    if (9 > currentHour){
+        $("#t9").addClass("future")
+    }
+}
+
 conditionalFormat();
 
 $("#b9").on("click", function(event){ /// change all data to ids
     event.preventDefault();
-    var textInput = {
+    var textInput9 = {
         text: document.querySelector("#t9").value.trim()
     }
-    localStorage.setItem("textInput", textInput)
-    console.log(textInput)
+    localStorage.setItem("textInput9", JSON.stringify(textInput9));
+    console.log(textInput9)
 })
 
 
