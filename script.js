@@ -11,8 +11,11 @@ $("h2").addClass("col-1 hour");
 $("textarea").addClass("col-10 description");
 $("button").addClass("col-1 saveBtn saveBtn i:hover");  
 
-var saveData9 = (localStorage.getItem("textInput9"));
-    $("#t9").textContent = saveData9.text;
+
+var saveData9 = JSON.parse(localStorage.getItem("textInput9"));
+    $("#t9").text(saveData9.text)
+
+
 
 function conditionalFormat(){ ///we need to break this down to work on a single element no loop if 9 =<> curent hour set class then repeat for every element
 
@@ -25,6 +28,7 @@ function conditionalFormat(){ ///we need to break this down to work on a single 
     if (9 > currentHour){
         $("#t9").addClass("future")
     }
+    
 }
 
 conditionalFormat();
