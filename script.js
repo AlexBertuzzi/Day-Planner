@@ -1,16 +1,18 @@
+// Var today sets the current day at the top of the page using moment.js
 var today = $("<p>");
     today = moment().format("dddd, MMMM Do YYYY");
     $("#currentDay").append(today);
-    
+// Var currentHour uses moment.js to get the current hour as a number 0-23.
 var currentHour = moment().hour();
     console.log(currentHour);
-
+// Jquery sellectors are used to add CSS classes to the timeblock rows and its child elements.
 $(".row").addClass("time-block");
 $("h2").addClass("col-1 hour");
 $("textarea").addClass("col-10 description");
 $("button").addClass("col-1 saveBtn saveBtn i:hover");  
 
-
+// This series of variables checks to see if any data has been previously saved into local storage 
+//from the sepecific text fields and loads that data from local storage into that specific field.
 var saveData9 = JSON.parse(localStorage.getItem("textInput9"));
     if(saveData9 !== null){
         $("#t9").text(saveData9.text);
@@ -55,7 +57,9 @@ var saveData17 = JSON.parse(localStorage.getItem("textInput17"));
     if(saveData17 !== null){
         $("#t17").text(saveData17.text);
     }
-
+// This series of if statements is put into a function conditionalFormat so that the conditional format can be 
+// refresed on an interval. The if statements check the time of each row against the current hour inorder to determine
+// which format should be applied; past, present, or future.
 function conditionalFormat(){ 
 
     if (9 < currentHour){
@@ -149,7 +153,9 @@ function conditionalFormat(){
     }
 }
 conditionalFormat();
-
+// This series of on click functions set the functionality of the save buttons on the page so that when each
+// button is clicked the text from a specific textarea is loaded into local storage so that when the page is 
+// reloaded those textareas can be repopulated by thier previously saved values.
 $("#b9").on("click", function(event){ 
     event.preventDefault();
     var textInput9 = {
@@ -221,7 +227,8 @@ $("#b17").on("click", function(event){
     }
     localStorage.setItem("textInput17", JSON.stringify(textInput17));
 });
-
+// The set interval function calls the conditionalFormat function every five seconds inorder to continously update
+// the conditional format to the current time.
 setInterval(conditionalFormat(), 5000);
 
 
